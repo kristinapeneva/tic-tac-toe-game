@@ -43,6 +43,7 @@ class Board extends React.Component {
   }
 }
 
+
 class Game extends React.Component {
   constructor(props) {
     super(props);
@@ -52,8 +53,14 @@ class Game extends React.Component {
       }],
       stepNumber: 0,
       xIsNext: true,
+      xScores: 0,
+      oScores: 0,
+      drawScores: 0
     };
+    this.initialState = {...this.state}
   }
+  
+
 
   handleClick(i) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
@@ -89,13 +96,15 @@ class Game extends React.Component {
       'Go to game start';
       return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <button onClick={() => this.jumpTo(move)} className={(move === this.state.stepNumber ? "highlight" : "")}>{desc}</button>
         </li>
       );
     })
     let status;
     if (winner) {
       status = 'Winner: ' + winner;
+    } else if (!current.squares.includes(null)){
+      status = "draw";
     } else {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
@@ -112,6 +121,7 @@ class Game extends React.Component {
           <div>{status}</div>
           <ol>{moves}</ol>
         </div>
+        <div><button onClick={() => this.setState(this.initialState)}>New Game</button></div>
       </div>
     );
   }
