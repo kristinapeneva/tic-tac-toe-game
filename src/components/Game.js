@@ -84,21 +84,23 @@ class Game extends React.Component {
       return (
         <div className="wrapper">
         <div className="game">
-          <div className="left">
-            <div className="status">{status}</div>
+          <div className="game-1">
+              <div className="status">{status}</div>
               <div className="game-board">            
                 <Board 
                 squares={current.squares}
                 onClick={(i) => this.handleClick(i)}
                 />
               </div>
-              <div><button className="new-game" onClick={() => this.setState(this.initialState)}>New Game <FontAwesomeIcon icon={faRedo} /></button>
+          </div>
+          <div className="game-2">
+              <div className="new-game-wrapper"><button className="new-game" onClick={() => this.setState(this.initialState)}>New Game <FontAwesomeIcon icon={faRedo} /></button>
                 </div>
               <div className="game-info">
-                <button onClick={this.handleShowMoves} className="show-button">{show} Moves <FontAwesomeIcon icon={ arrow } /></button>
+              <div className="show-moves-wrapper"><button onClick={this.handleShowMoves} className="show-button">{show} Moves <FontAwesomeIcon icon={ arrow } /></button></div>
                 <ul className={showMoves ? null : "hide"}>{moves}</ul>
               </div>
-          </div>          
+            </div>      
         </div>
         <div className="social-icons">
           <FacebookShareButton url="https://kristinapeneva.com/tic-tac-toe-game">
