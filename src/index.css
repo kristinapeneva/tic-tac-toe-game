@@ -35,7 +35,29 @@ button {
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(to right top, #00beff, #4cd2e5, #95decf, #cee7ce, #f1f1e6);
+  background-size: 1000% 100%;
+
+  animation: backgroundcolor 30s linear reverse infinite;
 }
+
+@keyframes backgroundcolor {
+
+  0%{
+    background-position: left;
+  }
+
+  50%{
+    background-position: right;
+  }
+
+  100%{
+    background-position: left;
+  }
+  
+}
+
+
+
 .game{
   display: flex;
   justify-content: center;
