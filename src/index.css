@@ -1,20 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora&family=MuseoModerno:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 
 :root {
-  --orange: #F29F05;
+  --orange: #00C076;
   --light-color: #E1F1FF;
   --dark-orange: #F27405;
-  --blue: #86A8E7;
-  --pink: #6C5B7A;
+  --blue: #21A4FF;
+  --pink: #F98365;
+  --dark-blue: #2F4858;
+  --alpha: 0.2;
 font-size: calc(0.5em + 1vmin);
 }
 
 body {
-  font-family: 'MuseoModerno', cursive;
+  font-family: 'Architects Daughter', cursive;
+  letter-spacing: 0.05em;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   overflow: hidden;
+}
+
+button {
+  font-family: 'Architects Daughter', cursive;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .wrapper {
@@ -23,22 +33,31 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+  background-image: linear-gradient(to right top, #00beff, #4cd2e5, #95decf, #cee7ce, #f1f1e6);
 }
-
 .game{
   display: flex;
   justify-content: center;
   align-items: stretch;
 }
 
+/* #00C9AD
+#570038
+#D16BA5
+#DDD7C6 */
+
+/* #F98365
+#00C076
+#21A4FF */
+
 .game-board {
   height: calc(45vmin);
   width: calc(45vmin);
   border-radius: 2rem;
-  background-color: rgba(255, 255, 255, 0.4);
-  padding: 0.7em;
-  margin: 0.7em;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 0.9em;
+  margin: 0.8em;
+  box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.5)
 }
 
 .left {
@@ -53,13 +72,21 @@ body {
   padding: 5px 0;
   margin: 0.4em auto;
   background-color: transparent;
-  border: 2px solid var(--light-color);
-  color: var(--light-color);
+  border: none;
   border-radius: 0.5em;
+  font-size: 1rem;
+  font-weight: bold;
+  background-size: 300% 100%;
+  transition: all .4s ease-in-out;
+  color: var(--light-color);
+  background-image: linear-gradient(to right, #EB9928, #efad52, #f1b768, #eb9928);  box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
+  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
 }
 
 .new-game:hover{
   cursor: pointer;
+  background-position: 100% 0;
+  transform: scale(1.05);
 }
 
 .hide{
@@ -81,14 +108,23 @@ body {
 }
 
 .show-button{
-  display: block;
+  border: none;
   width: 40vmin;
   padding: 5px 0;
   margin: 0.4em auto;
-  background-color: transparent;
-  border: 2px solid var(--light-color);
   color: var(--light-color);
   border-radius: 0.5em;
+  background-size: 300% 100%;
+  background-image: linear-gradient(to right, #2F4858, #485563, #2b5876, #2F4858);
+  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+  transition: all .4s ease-in-out;
+  font-weight: bold;
+}
+
+.show-button:hover{
+  cursor: pointer;
+  background-position: 100% 0;
+  transform: scale(1.05);
 }
 
 ul {
@@ -103,32 +139,23 @@ ul {
   height: 4em;
 }
 
-/* ul > li:nth-child(1) > button{
-  width: 45vmin;
-  display: block;
-}
-
-ul > li:nth-child(1){
-  width: 50vmin;
-  height: 4vmin;
-  display: block;
-  padding: 0;
-  margin: 0.4em auto;
-  background-color: transparent;
-  border: 1px solid var(--light-color);
-  color: var(--light-color);
-  border-radius: 0.5em;
-  box-sizing: border-box;
-} */
-
 ul > li {
-  border: 1px solid var(--light-color);
-  border-radius: 0.3em;
+  border-radius: 0.7em;
   height: 3vmin;
   font-size: 0.4rem;
   text-align: center;
   padding: 0.1em;
   margin: 1px;
+  background-size: 300% 100%;
+  background-image: linear-gradient(to right, #2F4858, #485563, #2b5876, #2F4858);
+  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+  transition: all .4s ease-in-out;
+}
+
+ul > li:hover{
+  cursor: pointer;
+  background-position: 100% 0;
+  transform: scale(1.03);
 }
 
 .move{
@@ -141,6 +168,14 @@ ul > li {
   font-size: 0.8rem;
 }
 
+.highlight {
+  font-weight: bold;
+  color: #EB9928;
+}
+
+.move:hover{
+  cursor: pointer;
+}
 
 
 .board-row:after {
@@ -157,7 +192,7 @@ ul > li {
   background: transparent;
   border: none;
   float: left;
-  font-size: 4rem;
+  font-size: 4.3rem;
   font-weight: bold;
   /* line-height: 34px; */
   height: 15vmin;
@@ -177,21 +212,21 @@ ul > li {
 }
 
 .squareX {
-  color: #EEE8A9;
+  color: #2F4858;
 }
 
 .squareO {
-  color: #4F74AF;
+  color: #EB9928;
 }
 
 .board-row:nth-child(2)
  {
-  border-top: 3px solid var(--light-color);
-  border-bottom: 3px solid var(--light-color);
+  border-top: 1px solid var(--orange);
+  border-bottom: 1px solid var(--orange);
 }
 
 .board-row > .square:nth-child(2)
  {
-  border-left: 2px solid var(--light-color);
-  border-right: 3px solid var(--light-color);
+  border-left: 1px solid var(--orange);
+  border-right: 1px solid var(--orange);
 }
