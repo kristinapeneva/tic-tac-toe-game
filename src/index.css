@@ -12,6 +12,9 @@
   --dark-blue: #2F4858;
   --alpha: 0.2;
 font-size: calc(0.5em + 1vmin);
+  --width-board: 45vmin;
+  --width-square: 15vmin;
+  --width-buttons: 40vmin;
 }
 
 body {
@@ -58,26 +61,15 @@ button {
   
 }
 
-
-
 .game{
   display: flex;
   justify-content: center;
   align-items: stretch;
 }
 
-/* #00C9AD
-#570038
-#D16BA5
-#DDD7C6 */
-
-/* #F98365
-#00C076
-#21A4FF */
-
 .game-board {
-  height: calc(45vmin);
-  width: calc(45vmin);
+  height: var(--width-board);
+  width: var(--width-board);
   border-radius: 2rem;
   background-color: rgba(255, 255, 255, 0.7);
   padding: 0.9em;
@@ -110,7 +102,7 @@ button {
 .new-game {
   opacity: 0;
   display: block;
-  width: 40vmin;
+  width: var(--width-buttons);
   padding: 5px 0;
   margin: 0.4em auto;
   background-color: transparent;
@@ -141,7 +133,7 @@ button {
 .status {
   display: block;
   margin: auto;
-  font-size: large;
+  font-size: 1.2rem;
   font-weight: bold;
   text-shadow:rgba(45, 54, 65, 0.75);
   opacity: 0;
@@ -160,7 +152,7 @@ button {
 .show-button{
   opacity: 0;
   border: none;
-  width: 40vmin;
+  width: var(--width-buttons);
   padding: 5px 0;
   margin: 0.4em auto;
   color: var(--light-color);
@@ -172,6 +164,7 @@ button {
   font-weight: bold;
   animation: startview 0.5s cubic-bezier(.28,.63,.7,1.16) forwards;
   animation-delay: 0.6s;
+  font-size: 1rem;
 }
 
 .show-button:hover{
@@ -252,12 +245,12 @@ ul > li:hover{
   font-size: 4.3rem;
   font-weight: bold;
   /* line-height: 34px; */
-  height: 15vmin;
+  height: var(--width-square);
   /* margin-right: -1px;
   margin-top: -1px; */
   padding: 0;
   text-align: center;
-  width: 15vmin;
+  width:var(--width-square);
 }
 
 .square:focus {
@@ -345,4 +338,30 @@ ul > li:hover{
 
 .icon-tw{
   animation-delay: 0.6s;
+}
+
+
+@media (max-width: 400px) and (orientation:portrait) {
+    :root {
+      font-size: calc(0.6em + 1vh);
+      --width-board: 75vmin;
+      --width-square: 25vmin;
+      --width-buttons: 70vmin;
+    }
+
+    .social-icons {
+      flex-direction: row;
+      position: absolute;
+      right: auto;
+      top: auto;
+      bottom: 0;
+      width: 100vw;
+      margin: 0.8em auto;
+      justify-content: space-around;
+    }
+
+    /* .icon {
+      margin
+    } */
+
 }
