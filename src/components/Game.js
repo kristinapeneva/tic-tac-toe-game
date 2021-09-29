@@ -1,5 +1,7 @@
 import React from "react";
 import Board from "./Board";
+import { EmailShareButton, FacebookShareButton, FacebookMessengerShareButton, WhatsappShareButton, TwitterShareButton } from 'react-share';
+import { FacebookIcon, EmailIcon, WhatsappIcon, TwitterIcon, FacebookMessengerIcon } from 'react-share';
 
 class Game extends React.Component {
     constructor(props) {
@@ -89,10 +91,24 @@ class Game extends React.Component {
                 <button onClick={this.handleShowMoves} className="show-button">{show} Moves</button>
                 <ul className={showMoves ? null : "hide"}>{moves}</ul>
               </div>
-          </div>
-          
-          
-          
+          </div>          
+        </div>
+        <div className="social-icons">
+          <FacebookShareButton url="https://kristinapeneva.com/tic-tac-toe-game">
+            <FacebookIcon size="1.5rem" round={true} className="icon" quote="Check this awesome Tic-Tac-Toe game! I just love it <3" />
+          </ FacebookShareButton>
+          <FacebookMessengerShareButton url="https://kristinapeneva.com/tic-tac-toe-game">
+            <FacebookMessengerIcon size="1.5rem" round={true} className="icon" quote="Check this awesome Tic-Tac-Toe game! I just love it <3" />
+          </ FacebookMessengerShareButton>
+          <WhatsappShareButton url="https://kristinapeneva.com/tic-tac-toe-game">
+            <WhatsappIcon size="1.5rem" round={true} className="icon" />
+          </ WhatsappShareButton>
+          <EmailShareButton url="https://kristinapeneva.com/tic-tac-toe-game">
+            <EmailIcon size="1.5rem" round={true} className="icon" subject="A New Tic-Tac-Toe Game! Check it!"/>
+          </ EmailShareButton>
+          <TwitterShareButton url="https://kristinapeneva.com/tic-tac-toe-game">
+            <TwitterIcon size="1.5rem" round={true} className="icon" title="Tic-Tac-Toe Game" />
+          </ TwitterShareButton>
         </div>
         </div>
       );
