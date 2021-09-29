@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 
 :root {
-  --orange: #00C076;
+  --orange: #00beff;
   --light-color: #E1F1FF;
   --dark-orange: #F27405;
   --blue: #21A4FF;
@@ -13,16 +13,17 @@ font-size: calc(0.5em + 1vmin);
 }
 
 body {
-  font-family: 'Architects Daughter', cursive;
+  font-family: cursive;
   letter-spacing: 0.05em;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   overflow: hidden;
+  color: var(--dark-blue);
 }
 
 button {
-  font-family: 'Architects Daughter', cursive;
+  font-family: cursive;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -51,13 +52,14 @@ button {
 #21A4FF */
 
 .game-board {
+  
   height: calc(45vmin);
   width: calc(45vmin);
   border-radius: 2rem;
   background-color: rgba(255, 255, 255, 0.7);
   padding: 0.9em;
   margin: 0.8em;
-  box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.5)
+  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
 }
 
 .left {
@@ -79,7 +81,7 @@ button {
   background-size: 300% 100%;
   transition: all .4s ease-in-out;
   color: var(--light-color);
-  background-image: linear-gradient(to right, #EB9928, #efad52, #f1b768, #eb9928);  box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
+  background-image: linear-gradient(to right, #d38924, #eb9928, #f1b768, #d38924);  box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
   box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
 }
 
@@ -189,6 +191,7 @@ ul > li:hover{
 
 
 .square {
+  font-family: 'Architects Daughter', cursive;
   background: transparent;
   border: none;
   float: left;
@@ -221,12 +224,12 @@ ul > li:hover{
 
 .board-row:nth-child(2)
  {
-  border-top: 1px solid var(--orange);
-  border-bottom: 1px solid var(--orange);
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
 }
 
 .board-row > .square:nth-child(2)
  {
-  border-left: 1px solid var(--orange);
-  border-right: 1px solid var(--orange);
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
 }
