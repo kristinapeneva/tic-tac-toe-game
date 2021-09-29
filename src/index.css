@@ -327,6 +327,7 @@ ul > li:hover{
   margin: 0.2em;
   transition: all .4s cubic-bezier(.33,.63,.69,1.2);
   box-shadow: 0 1px 5px 0 rgba(45, 54, 65, 0.75);
+  box-sizing: border-box;
 
   animation: startview-icons 0.5s cubic-bezier(.33,.63,.69,1.2) forwards;
   opacity: 0;
@@ -365,7 +366,7 @@ ul > li:hover{
 }
 
 .icon:hover{
-  transform: scale(1.1);
+  border: 1px solid var(--light-color);
 }
 
 
