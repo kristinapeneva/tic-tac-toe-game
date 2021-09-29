@@ -3,7 +3,9 @@ import Board from "./Board";
 import { EmailShareButton, FacebookShareButton, FacebookMessengerShareButton, WhatsappShareButton, TwitterShareButton } from 'react-share';
 import { FacebookIcon, EmailIcon, WhatsappIcon, TwitterIcon, FacebookMessengerIcon } from 'react-share';
 import Popup from "reactjs-popup";
-import 'reactjs-popup/dist/index.css'
+import 'reactjs-popup/dist/index.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRedo, faCheck, faTimes, faCare } from '@fortawesome/free-solid-svg-icons';
 
 class Game extends React.Component {
     constructor(props) {

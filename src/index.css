@@ -281,7 +281,6 @@ ul > li:hover{
 .popup-btns {
   display: flex;
   justify-content: space-around;
-  margin: 0 0 0.5em;
 }
 
 .popup-btn {
@@ -291,7 +290,7 @@ ul > li:hover{
   transition: all .4s ease-in-out;
   color: var(--light-color);
   background-image: linear-gradient(to right, #d38924, #eb9928, #f1b768, #d38924);  box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
-  box-shadow: 0 1px 5px 0 rgba(45, 54, 65, 0.75);
+  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
   padding: 5px 0;
   font-size: 0.8em;
   border-radius: 0.5em;
@@ -301,5 +300,4 @@ ul > li:hover{
   cursor: pointer;
   background-position: 100% 0;
   transform: scale(1.05);
-  
 }
