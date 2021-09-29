@@ -2,6 +2,8 @@ import React from "react";
 import Board from "./Board";
 import { EmailShareButton, FacebookShareButton, FacebookMessengerShareButton, WhatsappShareButton, TwitterShareButton } from 'react-share';
 import { FacebookIcon, EmailIcon, WhatsappIcon, TwitterIcon, FacebookMessengerIcon } from 'react-share';
+import Popup from "reactjs-popup";
+import 'reactjs-popup/dist/index.css'
 
 class Game extends React.Component {
     constructor(props) {
@@ -68,12 +70,32 @@ class Game extends React.Component {
       })
       let status;
       if (winner) {
-        status = 'Winner: ' + winner;
+        status = 'The winner is ' + winner + "!";
       } else if (!current.squares.includes(null)){
-        status = "draw";
+        status = "Draw!";
       } else {
         status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
       }
+
+      const PopupNewGame = () => (
+        <Popup trigger={<button className="new-game">New Game</button>}>
+              {close => (
+              <div>
+                <h4>
+                New game?
+                </h4>
+                <div className="popup-btns">
+                  <a className="popup-btn" onClick={() => this.setState(this.initialState) && {close}}>
+                    yes
+                  </a>
+                  <a className="popup-btn" onClick={close}>
+                    no
+                  </a>
+                </div>
+              </div>
+            )}
+        </Popup>
+      );
   
       return (
         <div className="wrapper">
@@ -86,7 +108,8 @@ class Game extends React.Component {
                 onClick={(i) => this.handleClick(i)}
                 />
               </div>
-              <div><button onClick={() => this.setState(this.initialState)} className="new-game">New Game</button></div>
+              <div><PopupNewGame />
+                </div>
               <div className="game-info">
                 <button onClick={this.handleShowMoves} className="show-button">{show} Moves</button>
                 <ul className={showMoves ? null : "hide"}>{moves}</ul>

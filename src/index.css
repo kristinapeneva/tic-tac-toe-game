@@ -74,7 +74,6 @@ button {
 #21A4FF */
 
 .game-board {
-  
   height: calc(45vmin);
   width: calc(45vmin);
   border-radius: 2rem;
@@ -122,6 +121,7 @@ button {
   margin: auto;
   font-size: large;
   font-weight: bold;
+  text-shadow:rgba(45, 54, 65, 0.75);
 }
 
 .game-info{
@@ -213,7 +213,7 @@ ul > li:hover{
 
 
 .square {
-  font-family: 'Architects Daughter', cursive;
+  font-family: cursive;
   background: transparent;
   border: none;
   float: left;
@@ -230,6 +230,10 @@ ul > li:hover{
 
 .square:focus {
   outline: none;
+}
+
+.square:hover{
+  cursor: pointer;
 }
 
 .kbd-navigation .square:focus {
@@ -272,4 +276,30 @@ ul > li:hover{
 
 .icon:hover{
   transform: scale(1.1);
+}
+
+.popup-btns {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 0 0.5em;
+}
+
+.popup-btn {
+  width: 45%;
+  text-align: center;
+  background-size: 300% 100%;
+  transition: all .4s ease-in-out;
+  color: var(--light-color);
+  background-image: linear-gradient(to right, #d38924, #eb9928, #f1b768, #d38924);  box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
+  box-shadow: 0 1px 5px 0 rgba(45, 54, 65, 0.75);
+  padding: 5px 0;
+  font-size: 0.8em;
+  border-radius: 0.5em;
+}
+
+.popup-btn:hover{
+  cursor: pointer;
+  background-position: 100% 0;
+  transform: scale(1.05);
+  
 }
