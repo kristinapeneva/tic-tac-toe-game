@@ -2,10 +2,9 @@ import React from "react";
 import Board from "./Board";
 import { EmailShareButton, FacebookShareButton, FacebookMessengerShareButton, WhatsappShareButton, TwitterShareButton } from 'react-share';
 import { FacebookIcon, EmailIcon, WhatsappIcon, TwitterIcon, FacebookMessengerIcon } from 'react-share';
-import Popup from "reactjs-popup";
 import 'reactjs-popup/dist/index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRedo, faCheck, faTimes, faCare } from '@fortawesome/free-solid-svg-icons';
+import { faRedo, faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 
 class Game extends React.Component {
     constructor(props) {
@@ -18,6 +17,7 @@ class Game extends React.Component {
         xIsNext: true,
         showMoves: false,
         show: "Show",
+        arrow: faCaretDown,
       };
       this.initialState = {...this.state}
     }
@@ -50,11 +50,12 @@ class Game extends React.Component {
     handleShowMoves = () => {
       this.setState({showMoves: !this.state.showMoves})
       if (this.state.show === "Show") {
-        this.setState({show: "Hide"})
-      } else { this.setState({show: "Show"})}
+        this.setState({show: "Hide", arrow: faCaretUp})
+      } else { this.setState({show: "Show", arrow: faCaretDown})}
     }
   
     render() {
+      const arrow = this.state.arrow;
       const show = this.state.show;
       const showMoves = this.state.showMoves;
       const history = this.state.history;
@@ -79,25 +80,6 @@ class Game extends React.Component {
         status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
       }
 
-      const PopupNewGame = () => (
-        <Popup trigger={<button className="new-game">New Game</button>}>
-              {close => (
-              <div>
-                <h4>
-                New game?
-                </h4>
-                <div className="popup-btns">
-                  <a className="popup-btn" onClick={() => this.setState(this.initialState) && {close}}>
-                    yes
-                  </a>
-                  <a className="popup-btn" onClick={close}>
-                    no
-                  </a>
-                </div>
-              </div>
-            )}
-        </Popup>
-      );
   
       return (
         <div className="wrapper">
@@ -110,29 +92,29 @@ class Game extends React.Component {
                 onClick={(i) => this.handleClick(i)}
                 />
               </div>
-              <div><PopupNewGame />
+              <div><button className="new-game" onClick={() => this.setState(this.initialState)}>New Game <FontAwesomeIcon icon={faRedo} /></button>
                 </div>
               <div className="game-info">
-                <button onClick={this.handleShowMoves} className="show-button">{show} Moves</button>
+                <button onClick={this.handleShowMoves} className="show-button">{show} Moves <FontAwesomeIcon icon={ arrow } /></button>
                 <ul className={showMoves ? null : "hide"}>{moves}</ul>
               </div>
           </div>          
         </div>
         <div className="social-icons">
           <FacebookShareButton url="https://kristinapeneva.com/tic-tac-toe-game">
-            <FacebookIcon size="1.5rem" round={true} className="icon" quote="Check this awesome Tic-Tac-Toe game! I just love it <3" />
+            <FacebookIcon size="1.5rem" round={true} className="icon icon-fb" quote="Check this awesome Tic-Tac-Toe game! I just love it <3" />
           </ FacebookShareButton>
           <FacebookMessengerShareButton url="https://kristinapeneva.com/tic-tac-toe-game">
-            <FacebookMessengerIcon size="1.5rem" round={true} className="icon" quote="Check this awesome Tic-Tac-Toe game! I just love it <3" />
+            <FacebookMessengerIcon size="1.5rem" round={true} className="icon icon-msg" quote="Check this awesome Tic-Tac-Toe game! I just love it <3" />
           </ FacebookMessengerShareButton>
           <WhatsappShareButton url="https://kristinapeneva.com/tic-tac-toe-game">
-            <WhatsappIcon size="1.5rem" round={true} className="icon" />
+            <WhatsappIcon size="1.5rem" round={true} className="icon icon-wa" />
           </ WhatsappShareButton>
           <EmailShareButton url="https://kristinapeneva.com/tic-tac-toe-game">
-            <EmailIcon size="1.5rem" round={true} className="icon" subject="A New Tic-Tac-Toe Game! Check it!"/>
+            <EmailIcon size="1.5rem" round={true} className="icon icon-eml" subject="A New Tic-Tac-Toe Game! Check it!"/>
           </ EmailShareButton>
           <TwitterShareButton url="https://kristinapeneva.com/tic-tac-toe-game">
-            <TwitterIcon size="1.5rem" round={true} className="icon" title="Tic-Tac-Toe Game" />
+            <TwitterIcon size="1.5rem" round={true} className="icon icon-tw" title="Tic-Tac-Toe Game" />
           </ TwitterShareButton>
         </div>
         </div>
