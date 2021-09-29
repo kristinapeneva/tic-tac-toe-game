@@ -1,18 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=MuseoModerno:wght@300&display=swap');
+
 :root {
   --orange: #F29F05;
-  --light-color: #F2E8DC;
+  --light-color: #E1F1FF;
   --dark-orange: #F27405;
-  --blue: #1B3059;
-
+  --blue: #86A8E7;
+  --pink: #6C5B7A;
+font-size: calc(0.5em + 1vmin);
 }
 
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
+  font-family: 'MuseoModerno', cursive;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
-ol, ul {
-  padding-left: 30px;
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+}
+
+.game{
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.game-board {
+  height: calc(45vmin);
+  width: calc(45vmin);
+  border-radius: 2rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 0.7em;
+  margin: 0.7em;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.new-game {
+  display: block;
+  width: 40vmin;
+  padding: 5px 0;
+  margin: 0.4em auto;
+  background-color: transparent;
+  border: 2px solid var(--light-color);
+  color: var(--light-color);
+  border-radius: 0.5em;
+}
+
+.new-game:hover{
+  cursor: pointer;
+}
+
+.hide{
+  opacity: 0;
+}
+
+.status {
+  display: block;
+  margin: auto;
+  font-size: large;
+  font-weight: bold;
+}
+
+.game-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.show-button{
+  display: block;
+  width: 40vmin;
+  padding: 5px 0;
+  margin: 0.4em auto;
+  background-color: transparent;
+  border: 2px solid var(--light-color);
+  color: var(--light-color);
+  border-radius: 0.5em;
+}
+
+ul {
+  list-style: none;
+  height: 100%;
+  max-width: 45vmin;
+  margin: 1em 0;
+  padding: 0;
+  display: flex;
+  justify-content:center;
+  flex-wrap: wrap;
+  height: 4em;
+}
+
+/* ul > li:nth-child(1) > button{
+  width: 45vmin;
+  display: block;
+}
+
+ul > li:nth-child(1){
+  width: 50vmin;
+  height: 4vmin;
+  display: block;
+  padding: 0;
+  margin: 0.4em auto;
+  background-color: transparent;
+  border: 1px solid var(--light-color);
+  color: var(--light-color);
+  border-radius: 0.5em;
+  box-sizing: border-box;
+} */
+
+ul > li {
+  border: 1px solid var(--light-color);
+  border-radius: 0.3em;
+  height: 3vmin;
+  font-size: 0.4rem;
+  text-align: center;
+  padding: 0.1em;
+  margin: 1px;
+}
+
+.move{
+  width: 4vw;
+  background-color: transparent;
+  border: none;
+  color: var(--light-color);
+  font-family: 'MuseoModerno', cursive;
+  font-weight: lighter;
+  font-size: 0.8rem;
 }
 
 
@@ -20,26 +146,26 @@ ol, ul {
 .board-row:after {
   clear: both;
   content: "";
-  display: table;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.status {
-  margin-bottom: 10px;
-}
+
 
 .square {
-  background: #fff;
-  border: transparent;
+  background: transparent;
+  border: none;
   float: left;
-  font-size: 24px;
+  font-size: 4rem;
   font-weight: bold;
-  line-height: 34px;
-  height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
+  /* line-height: 34px; */
+  height: 15vmin;
+  /* margin-right: -1px;
+  margin-top: -1px; */
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: 15vmin;
 }
 
 .square:focus {
@@ -50,36 +176,22 @@ ol, ul {
   background: #ddd;
 }
 
-.game {
-  display: flex;
-  flex-direction: row;
-}
-
-.game-info {
-  margin-left: 20px;
-}
-
 .squareX {
-  color: blue;
+  color: #EEE8A9;
 }
 
 .squareO {
-  color: red;
+  color: #4F74AF;
 }
 
 .board-row:nth-child(2)
  {
-  border-top: 3px solid red;
-  border-bottom: 3px solid red;
+  border-top: 3px solid var(--light-color);
+  border-bottom: 3px solid var(--light-color);
 }
 
 .board-row > .square:nth-child(2)
  {
-  border-left: 2px solid red;
-  border-right: 3px solid red;
-}
-
-.border-row > .border-row:nth-child(2){
-  border-left: 5px solid red;
-  border-right: 5px solid red;
+  border-left: 2px solid var(--light-color);
+  border-right: 3px solid var(--light-color);
 }

@@ -10,6 +10,8 @@ class Game extends React.Component {
         }],
         stepNumber: 0,
         xIsNext: true,
+        showMoves: false,
+        show: "Show",
       };
       this.initialState = {...this.state}
     }
@@ -38,18 +40,27 @@ class Game extends React.Component {
         xIsNext: (step % 2) === 0,
       });
     }
+
+    handleShowMoves = () => {
+      this.setState({showMoves: !this.state.showMoves})
+      if (this.state.show === "Show") {
+        this.setState({show: "Hide"})
+      } else { this.setState({show: "Show"})}
+    }
   
     render() {
+      const show = this.state.show;
+      const showMoves = this.state.showMoves;
       const history = this.state.history;
       const current = history[this.state.stepNumber];
       const winner = calculateWinner(current.squares);
       const moves = history.map((step,move) => {
         const desc = move ?
-        'Go to move #' + move :
-        'Go to game start';
+        '#' + move :
+        '#0';
         return (
           <li key={move}>
-            <button onClick={() => this.jumpTo(move)} className={(move === this.state.stepNumber ? "highlight" : "")}>{desc}</button>
+            <button onClick={() => this.jumpTo(move)} className={(move === this.state.stepNumber ? "move highlight" : "move")}>{desc}</button>
           </li>
         );
       })
@@ -63,18 +74,26 @@ class Game extends React.Component {
       }
   
       return (
+        <div className="wrapper">
         <div className="game">
-          <div className="game-board">
-            <Board 
-            squares={current.squares}
-            onClick={(i) => this.handleClick(i)}
-            />
+          <div className="left">
+            <div className="status">{status}</div>
+              <div className="game-board">            
+                <Board 
+                squares={current.squares}
+                onClick={(i) => this.handleClick(i)}
+                />
+              </div>
+              <div><button onClick={() => this.setState(this.initialState)} className="new-game">New Game</button></div>
+              <div className="game-info">
+                <button onClick={this.handleShowMoves} className="show-button">{show} Moves</button>
+                <ul className={showMoves ? null : "hide"}>{moves}</ul>
+              </div>
           </div>
-          <div className="game-info">
-            <div>{status}</div>
-            <ol>{moves}</ol>
-          </div>
-          <div><button onClick={() => this.setState(this.initialState)}>New Game</button></div>
+          
+          
+          
+        </div>
         </div>
       );
     }
