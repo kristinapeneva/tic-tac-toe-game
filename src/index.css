@@ -1,3 +1,11 @@
+:root {
+  --orange: #F29F05;
+  --light-color: #F2E8DC;
+  --dark-orange: #F27405;
+  --blue: #1B3059;
+
+}
+
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
@@ -6,6 +14,8 @@ body {
 ol, ul {
   padding-left: 30px;
 }
+
+
 
 .board-row:after {
   clear: both;
@@ -19,7 +29,7 @@ ol, ul {
 
 .square {
   background: #fff;
-  border: 1px solid #999;
+  border: transparent;
   float: left;
   font-size: 24px;
   font-weight: bold;
@@ -49,3 +59,27 @@ ol, ul {
   margin-left: 20px;
 }
 
+.squareX {
+  color: blue;
+}
+
+.squareO {
+  color: red;
+}
+
+.board-row:nth-child(2)
+ {
+  border-top: 3px solid red;
+  border-bottom: 3px solid red;
+}
+
+.board-row > .square:nth-child(2)
+ {
+  border-left: 2px solid red;
+  border-right: 3px solid red;
+}
+
+.border-row > .border-row:nth-child(2){
+  border-left: 5px solid red;
+  border-right: 5px solid red;
+}

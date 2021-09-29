@@ -10,12 +10,10 @@ class Game extends React.Component {
         }],
         stepNumber: 0,
         xIsNext: true,
-        xScores: 0,
-        oScores: 0,
-        drawScores: 0
       };
       this.initialState = {...this.state}
     }
+
   
     handleClick(i) {
       const history = this.state.history.slice(0, this.state.stepNumber + 1);
@@ -81,6 +79,8 @@ class Game extends React.Component {
       );
     }
   }
+
+  
 
   function calculateWinner(squares) {
     const lines = [
