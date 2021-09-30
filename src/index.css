@@ -278,6 +278,7 @@ ul > li {
   border-radius: 0.7em;
   padding: 0.2em;
   margin: 2px;
+  height: 3.5vmin;
   background-image: linear-gradient(to right, #2F4858, #485563, #6a8a9f, #2F4858);
   background-size: 300% 100%;
   box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
@@ -292,7 +293,7 @@ ul > li:hover{
 
 .move{
   width: 9vmin;
-  height: 4vmin;
+  height: 3.5vmin;
   padding: 0.2em 1px;
   background-color: transparent;
   border: none;
