@@ -6,6 +6,8 @@ import 'reactjs-popup/dist/index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRedo, faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 
+
+
 class Game extends React.Component {
     constructor(props) {
       super(props);
@@ -18,8 +20,16 @@ class Game extends React.Component {
         showMoves: false,
         show: "Show",
         arrow: faCaretDown,
+        theme: "theme1",
       };
-      this.initialState = {...this.state}
+
+      this.initialState = {
+        history: [{
+          squares: Array(9).fill(null),
+        }],
+        stepNumber: 0,
+        xIsNext: true,
+      }
     }
 
   
@@ -53,14 +63,22 @@ class Game extends React.Component {
         this.setState({show: "Hide", arrow: faCaretUp})
       } else { this.setState({show: "Show", arrow: faCaretDown})}
     }
-  
+
+    handleTheme = () => {
+      if (this.state.theme === "theme1") {
+        this.setState({theme: "theme2"})
+      } else { this.setState({theme: "theme1"})}
+    }
+
+
     render() {
+      const theme = this.state.theme;
       const arrow = this.state.arrow;
       const show = this.state.show;
       const showMoves = this.state.showMoves;
       const history = this.state.history;
       const current = history[this.state.stepNumber];
-      const winner = calculateWinner(current.squares);
+      const endGameResults = calculateWinner(current.squares);
       const moves = history.map((step,move) => {
         const desc = move ?
         '#' + move :
@@ -72,16 +90,20 @@ class Game extends React.Component {
         );
       })
       let status;
-      if (winner) {
-        status = 'The winner is ' + winner + "!";
+      if (endGameResults) {
+        status = 'The winner is ' + endGameResults.winner + "!";
       } else if (!current.squares.includes(null)){
         status = "Draw!";
       } else {
         status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
       }
 
+
+    
+
   
       return (
+        <div className={theme}>
         <div className="wrapper">
         <div className="game">
           <div className="game-1">
@@ -90,10 +112,12 @@ class Game extends React.Component {
                 <Board 
                 squares={current.squares}
                 onClick={(i) => this.handleClick(i)}
+                winningCombination={endGameResults?.winningCombination}
                 />
               </div>
           </div>
           <div className="game-2">
+            <div className="show-moves-wrapper"><button onClick={this.handleTheme} className="show-button">Change Theme</button></div>
               <div className="new-game-wrapper"><button className="new-game" onClick={() => this.setState(this.initialState)}>New Game <FontAwesomeIcon icon={faRedo} /></button>
                 </div>
               <div className="game-info">
@@ -120,6 +144,7 @@ class Game extends React.Component {
           </ TwitterShareButton>
         </div>
         </div>
+        </div>
       );
     }
   }
@@ -140,7 +165,7 @@ class Game extends React.Component {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        return squares[a];
+        return {winner: squares[a], winningCombination: lines[i]};
       }
     }
     return null;

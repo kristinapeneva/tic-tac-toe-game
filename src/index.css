@@ -9,10 +9,7 @@
 /* Main styles */
 
 :root {
-  --light-color: #E1F1FF;
-  --semi-light: #EB9928;
-  --semi-dark: #00BEFF;
-  --dark: #2F4858;
+
 font-size: calc(0.5em + 1vmin);
   --width-board: 45vmin;
   --width-square: 15vmin;
@@ -26,7 +23,72 @@ body {
   margin: 0;
   padding: 0;
   letter-spacing: 0.05em;
+
+}
+
+.theme1 {
+
+  --light: #E1F1FF;
+  --semi-light: #EB9928;
+  --semi-dark: #00BEFF;
+  --dark: #2F4858;
+
+  --light-text: #E1F1FF;
+
+  --background-2: #4cd2e5;
+  --background-3: #95decf;
+  --background-4: #cee7ce;
+
+  --new-game-1: #EB9928;
+  --new-game-2: #eb9928;
+  --new-game-3: #f1b768;
+
+  --show-moves-1: #2F4858;
+  --show-moves-2: #485563;
+  --show-moves-3: #6a8a9f;
+
+  --text-shadow: rgba(45, 54, 65, 0.3);
+  --dark-shadow: rgba(45, 54, 65, 0.75);
+
+  --game-board-bg: rgba(255,255,255, 0.4);
+
+  --border-button: none;
+
   color: var(--dark);
+}
+
+.theme2 {
+  --light: #152028;
+  --semi-light: #00BEFF;
+  --semi-dark: #202945;
+  --dark:  #E1F1FF;
+
+  /* Text */
+  --light-text: #E1F1FF;
+
+  --background-2: #1a273e;
+  --background-3: #162537;
+  --background-4:  #15232f;
+
+  --new-game-1: #1a273e;
+  --new-game-2: #1c243e;
+  --new-game-3: #192037;
+
+
+  --show-moves-1: #1a273e;
+  --show-moves-2: #1c243e;
+  --show-moves-3: #192037;
+
+
+  --border-button: 1px solid #E1F1FF;
+
+  --grayscale: grayscale();
+
+  --text-shadow: rgba(45, 54, 65, 0.3);
+  --dark-shadow: rgba(45, 54, 65, 0.75);
+
+  --game-board-bg: rgba(255,255,255, 0.1);
+  color: var(--light-text);
 }
 
 .wrapper {
@@ -35,7 +97,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(to right top, #00beff, #4cd2e5, #95decf, #cee7ce, #f1f1e6);
+  background-image: linear-gradient(to right top, var(--semi-dark), var(--background-2), var(--background-3), var(--background-4), var(--light));
   background-size: 2000% 100%;
 
   animation: backgroundcolor 30s linear reverse infinite;
@@ -103,7 +165,7 @@ button {
   margin: auto;
   font-size: 1.2rem;
   font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(45, 54, 65, 0.3);
+  text-shadow: 1px 1px 3px var(--text-shadow);
   opacity: 0;
 
   animation: startview 0.5s cubic-bezier(.33,.63,.69,1.2) forwards;
@@ -118,7 +180,7 @@ button {
   padding: 0.9em;
   margin: 0.9em;
   border-radius: 2em;
-  background-color: rgba(255,255,255, 0.4);
+  background-color: var(--game-board-bg);
   box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
   
   animation: startview 0.5s cubic-bezier(.33,.63,.69,1.2) forwards;
@@ -147,7 +209,7 @@ button {
 }
 
 .square {
-  font-family: cursive;
+  font-family:  'Handlee', cursive;
   height: var(--width-square);
   width: var(--width-square);
   float: left;
@@ -171,6 +233,10 @@ button {
   color: var(--semi-light);
 }
 
+.highlighted-winning {
+  background-color: var(--light);
+}
+
 
 /* Main Section - New Game Button */
 
@@ -188,12 +254,12 @@ button {
   width: var(--width-buttons);
   padding: 5px 0;
   border-radius: 0.5em;
-  border: none;
-  color: var(--light-color);
+  border: var(--border-button);
+  color: var(--light-text);
   font-size: 1rem;
   font-weight: bold;
-  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
-  background-image: linear-gradient(to right, #d38924, #eb9928, #f1b768, #d38924);  box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
+  box-shadow: 0 4px 15px 0 var(--dark-shadow);
+  background-image: linear-gradient(to right, var(--new-game-1), var(--new-game-2), var(--new-game-3), var(--new-game-1));  
   background-size: 300% 100%;
 
   transition: all .4s cubic-bezier(.33,.63,.69,1.2);
@@ -233,13 +299,13 @@ button {
   margin: 0.4em auto;
   width: var(--width-buttons);
   padding: 5px 0;
-  border: none;
-  color: var(--light-color);
+  border: var(--border-button);
+  color: var(--light-text);
   font-size: 1rem;
   font-weight: bold;
-  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+  box-shadow: 0 4px 15px 0 var(--dark-shadow);
   border-radius: 0.5em;
-  background-image: linear-gradient(to right, #2F4858, #485563, #6a8a9f, #2F4858);
+  background-image: linear-gradient(to right, var(--show-moves-1), var(--show-moves-2), var(--show-moves-3), var(--show-moves-1));
   background-size: 300% 100%;
 
 
@@ -279,9 +345,9 @@ ul > li {
   padding: 0.2em;
   margin: 2px;
   height: 3.5vmin;
-  background-image: linear-gradient(to right, #2F4858, #485563, #6a8a9f, #2F4858);
+  background-image: linear-gradient(to right, var(--show-moves-1), var(--show-moves-2), var(--show-moves-3), var(--show-moves-1));
   background-size: 300% 100%;
-  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+  box-shadow: 0 4px 15px 0 var(--dark-shadow);
   transition: all .4s cubic-bezier(.33,.63,.69,1.2);
 }
 
@@ -296,10 +362,11 @@ ul > li:hover{
   height: 3.5vmin;
   padding: 0.2em 1px;
   background-color: transparent;
-  border: none;
-  color: var(--light-color);
+  border: var(--border-button);
+  color: var(--light-text);
   font-weight: lighter;
   font-size: 0.8rem;
+  border-radius: 0.5em;
 }
 
 .highlight {
@@ -327,7 +394,7 @@ ul > li:hover{
   border-radius: 50%;
   margin: 0.2em;
   transition: all .4s cubic-bezier(.33,.63,.69,1.2);
-  box-shadow: 0 1px 5px 0 rgba(45, 54, 65, 0.75);
+  box-shadow: 0 1px 5px 0 var(--dark-shadow);
   box-sizing: border-box;
 
   animation: startview-icons 0.5s cubic-bezier(.33,.63,.69,1.2) forwards;
@@ -367,7 +434,7 @@ ul > li:hover{
 }
 
 .icon:hover{
-  border: 1px solid var(--light-color);
+  border: 1px solid var(--light);
 }
 
 
