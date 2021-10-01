@@ -2,7 +2,7 @@ import React from "react";
 import Board from "./Board";
 import 'reactjs-popup/dist/index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRedo, faCaretDown, faCaretUp, faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import { faRedo, faCaretDown, faCaretUp, faShareAlt, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import Popup from "./Popup";
 
 
@@ -20,7 +20,8 @@ class Game extends React.Component {
         show: "Show",
         arrow: faCaretDown,
         theme: "theme1",
-        popUp: false
+        popUp: false,
+        themeIcon: faMoon
       };
 
       this.initialState = {
@@ -66,8 +67,8 @@ class Game extends React.Component {
 
     handleTheme = () => {
       if (this.state.theme === "theme1") {
-        this.setState({theme: "theme2"})
-      } else { this.setState({theme: "theme1"})}
+        this.setState({theme: "theme2", themeIcon: faSun})
+      } else { this.setState({theme: "theme1", themeIcon: faMoon})}
     }
 
     togglePopup = () => {
@@ -76,6 +77,7 @@ class Game extends React.Component {
 
 
     render() {
+      const themeIcon = this.state.themeIcon;
       const theme = this.state.theme;
       const arrow = this.state.arrow;
       const show = this.state.show;
@@ -121,18 +123,22 @@ class Game extends React.Component {
               </div>
           </div>
           <div className="game-2">
-            <div className="show-moves-wrapper"><div onClick={this.handleTheme} className="show-button">Change Theme</div></div>
+
               <div className="new-game-wrapper"><div className="new-game" onClick={() => this.setState(this.initialState)}>New Game <FontAwesomeIcon icon={faRedo} /></div>
                 </div>
               <div className="game-info">
               <div className="show-moves-wrapper"><button onClick={this.handleShowMoves} className="show-button">{show} Moves <FontAwesomeIcon icon={ arrow } /></button></div>
                 <ul className={showMoves ? null : "hide"}>{moves}</ul>
               </div>
-            </div>      
+            </div>
+                
         </div>
-        <div className="share-button-wrapper"><div onClick={this.togglePopup}><FontAwesomeIcon icon={ faShareAlt } className="share-button"/></div></div>
-        {this.state.popUp && <Popup theme={this.state.theme} handleClose={this.togglePopup} />}
-        
+        {this.state.popUp && <Popup theme={this.state.theme} handleClose={this.togglePopup} />}  
+        <div className="share-theme-icons">
+          <div className="share-button-wrapper"><div onClick={this.togglePopup} className="share-button"><FontAwesomeIcon icon={ faShareAlt } /></div></div>
+          
+          <div className="theme-button-wrapper"><div onClick={this.handleTheme} className="theme-button"><FontAwesomeIcon icon={ themeIcon } /></div></div>
+        </div>
         </div>
         </div>
       );
