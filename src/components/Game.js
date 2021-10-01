@@ -127,7 +127,7 @@ class Game extends React.Component {
               <div className="new-game-wrapper"><div className="new-game" onClick={() => this.setState(this.initialState)}>New Game <FontAwesomeIcon icon={faRedo} /></div>
                 </div>
               <div className="game-info">
-              <div className="show-moves-wrapper"><button onClick={this.handleShowMoves} className="show-button">{show} Moves <FontAwesomeIcon icon={ arrow } /></button></div>
+              <div className="show-moves-wrapper"><div onClick={this.handleShowMoves} className="show-button">{show} Moves <FontAwesomeIcon icon={ arrow } /></div></div>
                 <ul className={showMoves ? null : "hide"}>{moves}</ul>
               </div>
             </div>

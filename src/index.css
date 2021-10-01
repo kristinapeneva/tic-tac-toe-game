@@ -15,6 +15,7 @@ font-size: calc(0.5em + 1vmin);
   --width-square: 15vmin;
   --width-buttons: 40vmin;
   --width-small-buttons: 3rem;
+  --cubic-bezier: cubic-bezier(.5,-0.24,.46,1.29);
 }
 
 body {
@@ -140,11 +141,6 @@ body {
   }
 }
 
-button {
-  font-family: 'Handlee', cursive;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
 
 .game-1 {
   display: flex;
@@ -168,7 +164,7 @@ button {
   text-shadow: 1px 1px 3px var(--text-shadow);
   opacity: 0;
 
-  animation: startview 0.5s cubic-bezier(.33,.63,.69,1.2) forwards;
+  animation: startview 0.5s var(--cubic-bezier) forwards;
 }
 
 
@@ -183,7 +179,7 @@ button {
   background-color: var(--game-board-bg);
   box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
   
-  animation: startview 0.5s cubic-bezier(.33,.63,.69,1.2) forwards;
+  animation: startview 0.5s var(--cubic-bezier) forwards;
   animation-delay: 0.2s;
   opacity: 0;
 }
@@ -234,7 +230,7 @@ button {
 }
 
 .highlighted-winning {
-  animation: winning-combo 0.5s cubic-bezier(.33,.63,.69,1.2) forwards;
+  animation: winning-combo 0.5s var(--cubic-bezier) forwards;
 }
 
 @keyframes winning-combo {
@@ -255,7 +251,7 @@ button {
 /* Main Section - New Game Button */
 
 .new-game-wrapper{
-  transition: all .4s cubic-bezier(.33,.63,.69,1.2);
+  transition: all .4s var(--cubic-bezier);
 }
 
 .new-game-wrapper:hover{
@@ -280,8 +276,8 @@ button {
   text-align: center;
   box-sizing: border-box;
 
-  transition: all .4s cubic-bezier(.33,.63,.69,1.2);
-  animation: startview 0.5s cubic-bezier(.33,.63,.69,1.2) forwards;
+  transition: all .4s var(--cubic-bezier);
+  animation: startview 0.5s var(--cubic-bezier) forwards;
   animation-delay: 0.4s;
   opacity: 0;
 }
@@ -305,7 +301,7 @@ button {
 /* Main Section -  Moves Info - Show Moves Button*/
 
 .show-moves-wrapper{
-  transition: all .4s cubic-bezier(.33,.63,.69,1.2);
+  transition: all .4s var(--cubic-bezier);
 }
 
 .show-moves-wrapper:hover{
@@ -331,8 +327,8 @@ button {
   box-sizing: border-box;
 
 
-  transition: all .4s cubic-bezier(.33,.63,.69,1.2);
-  animation: startview 0.5s cubic-bezier(.33,.63,.69,1.2) forwards;
+  transition: all .4s var(--cubic-bezier);
+  animation: startview 0.5s var(--cubic-bezier) forwards;
   animation-delay: 0.6s;
   opacity: 0;
 }
@@ -370,7 +366,7 @@ ul > li {
   background-image: linear-gradient(to right, var(--show-moves-1), var(--show-moves-2), var(--show-moves-3), var(--show-moves-1));
   background-size: 300% 100%;
   box-shadow: 0 4px 15px 0 var(--dark-shadow);
-  transition: all .4s cubic-bezier(.33,.63,.69,1.2);
+  transition: all .4s var(--cubic-bezier);
 }
 
 ul > li:hover{
@@ -407,7 +403,7 @@ ul > li:hover{
   display: flex;
   margin: 0 auto;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   height: 80%;
 }
@@ -415,12 +411,13 @@ ul > li:hover{
 .icon {
   border-radius: 50%;
   margin: 0 0.2em;
-  transition: all .4s cubic-bezier(.33,.63,.69,1.2);
+  transition: all .4s var(--cubic-bezier);
   box-sizing: border-box;
   color: var(--light-text);
   font-size: 2rem;
+  margin: 0.4em;
 
-  animation: startview-icons 0.5s cubic-bezier(.33,.63,.69,1.2) forwards;
+  animation: startview-icons 0.5s var(--cubic-bezier) forwards;
   opacity: 0;
 }
 
@@ -444,6 +441,10 @@ ul > li:hover{
   animation-delay: 0.6s;
 }
 
+.icon:hover {
+  height: 1.7rem;
+}
+
 @keyframes startview-icons {
   0%{
     transform: scale(0.8);
@@ -454,10 +455,6 @@ ul > li:hover{
     transform: scale(1);
     opacity: 1;
   }
-}
-
-.icon:hover{
-  border: 1px solid var(--light);
 }
 
 
@@ -476,7 +473,7 @@ ul > li:hover{
 /* Popup window for social media */
 
 .share-button-wrapper{
-  transition: all .4s cubic-bezier(.33,.63,.69,1.2);
+  transition: all .4s var(--cubic-bezier);
   margin-bottom: 0.5em;
 }
 
@@ -495,8 +492,8 @@ ul > li:hover{
   box-sizing: border-box;
   border-radius: 0.3em;
 
-  transition: all .4s cubic-bezier(.33,.63,.69,1.2);
-  animation: startview 0.5s cubic-bezier(.33,.63,.69,1.2) forwards;
+  transition: all .4s var(--cubic-bezier);
+  animation: startview-icons 0.5s var(--cubic-bezier) forwards;
   animation-delay: 0.4s;
   opacity: 0;
 }
@@ -519,7 +516,7 @@ ul > li:hover{
  
 .box {
   position: relative;
-  width: 40%;
+  width: 35%;
   min-width: fit-content;
   margin: 0 auto;
   height: fit-content;
@@ -527,13 +524,27 @@ ul > li:hover{
   border-radius: 0.5em;
   border: var(--border-button);
   overflow: auto;
-  padding: 2em 1em;
+  padding: 3em 1em;
+
+  animation: sharebox 0.5s var(--cubic-bezier) forwards;
+  opacity: 0;
+}
+
+@keyframes sharebox {
+  0%{
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100%{
+    opacity: 1;
+    transform: scale(1);
+  }
 }
  
 .close-popup {
   cursor: pointer;
   position: relative;
-  width: 40%;
+  width: 35%;
   margin:auto;
   display: block;
   margin: 0.5em;
@@ -543,12 +554,15 @@ ul > li:hover{
   height: fit-content;
   min-width: fit-content;
   color: var(--light-text);
+
+  animation: sharebox 0.5s var(--cubic-bezier) forwards;
+  opacity: 0;
 }
 
 /* Theme Change */
 
 .theme-button-wrapper{
-  transition: all .4s cubic-bezier(.33,.63,.69,1.2);
+  transition: all .4s var(--cubic-bezier);
 }
 
 .theme-button-wrapper:hover{
@@ -566,8 +580,8 @@ ul > li:hover{
   box-sizing: border-box;
   border-radius: 0.3em;
 
-  transition: all .4s cubic-bezier(.33,.63,.69,1.2);
-  animation: startview 0.5s cubic-bezier(.33,.63,.69,1.2) forwards;
+  transition: all .4s var(--cubic-bezier);
+  animation: startview-icons 0.5s var(--cubic-bezier) forwards;
   animation-delay: 0.6s;
   opacity: 0;
 }
@@ -588,20 +602,16 @@ ul > li:hover{
     }
 
     .social-icons {
-      width: 90vw;
-      margin: 0.2em auto;
-      flex-direction: row;
-      justify-content: space-around;
-      position: absolute;
-      right: auto;
-      top: auto;
-      bottom: 0;
+      display: flex;
+      flex-direction: column;
     }
 
     ul > li {
       border-radius: 0.7em;
       height: fit-content;
     }
+
+
 }
 
 @media (max-height: 400px) and (orientation:landscape) {

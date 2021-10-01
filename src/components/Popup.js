@@ -1,6 +1,5 @@
 import React from "react";
 import { EmailShareButton, FacebookShareButton, FacebookMessengerShareButton, WhatsappShareButton, TwitterShareButton } from 'react-share';
-import { FacebookIcon, EmailIcon, WhatsappIcon, TwitterIcon, FacebookMessengerIcon } from 'react-share';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faFacebookMessenger, faWhatsapp, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
