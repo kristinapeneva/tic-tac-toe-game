@@ -234,9 +234,23 @@ button {
 }
 
 .highlighted-winning {
-  background-color: var(--light);
+  animation: winning-combo 0.5s cubic-bezier(.33,.63,.69,1.2) forwards;
 }
 
+@keyframes winning-combo {
+  0%{
+    font-size: 3.5rem;    
+  }
+
+  50%{
+    font-size: 4rem;
+  }
+
+  100%{
+    font-size: 3.5rem;
+    background-color: var(--game-board-bg);
+  }
+}
 
 /* Main Section - New Game Button */
 
