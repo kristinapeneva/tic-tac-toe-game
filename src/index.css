@@ -23,11 +23,9 @@ body {
   margin: 0;
   padding: 0;
   letter-spacing: 0.05em;
-
 }
 
 .theme1 {
-
   --light: #E1F1FF;
   --semi-light: #EB9928;
   --semi-dark: #00BEFF;
@@ -49,6 +47,7 @@ body {
 
   --text-shadow: rgba(45, 54, 65, 0.3);
   --dark-shadow: rgba(45, 54, 65, 0.75);
+  --popup-background: rgba(21, 32, 40, 0.5);
 
   --game-board-bg: rgba(255,255,255, 0.4);
 
@@ -63,7 +62,6 @@ body {
   --semi-dark: #202945;
   --dark:  #E1F1FF;
 
-  /* Text */
   --light-text: #E1F1FF;
 
   --background-2: #1a273e;
@@ -81,6 +79,7 @@ body {
 
 
   --border-button: 1px solid #E1F1FF;
+  --popup-background: rgba(21, 32, 40, 0.5);
 
   --grayscale: grayscale();
 
@@ -275,6 +274,9 @@ button {
   box-shadow: 0 4px 15px 0 var(--dark-shadow);
   background-image: linear-gradient(to right, var(--new-game-1), var(--new-game-2), var(--new-game-3), var(--new-game-1));  
   background-size: 300% 100%;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
 
   transition: all .4s cubic-bezier(.33,.63,.69,1.2);
   animation: startview 0.5s cubic-bezier(.33,.63,.69,1.2) forwards;
@@ -321,12 +323,15 @@ button {
   border-radius: 0.5em;
   background-image: linear-gradient(to right, var(--show-moves-1), var(--show-moves-2), var(--show-moves-3), var(--show-moves-1));
   background-size: 300% 100%;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
 
 
   transition: all .4s cubic-bezier(.33,.63,.69,1.2);
   animation: startview 0.5s cubic-bezier(.33,.63,.69,1.2) forwards;
   animation-delay: 0.6s;
-  opacity: 0;  
+  opacity: 0;
 }
 
 .show-button:hover{
@@ -397,19 +402,21 @@ ul > li:hover{
 
 .social-icons {
   display: flex;
-  flex-direction: column;
-  margin: 0.5em;
-  position: absolute;
-  right: 0;
-  top: 0;
+  margin: 0 auto;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  height: 80%;
 }
 
 .icon {
   border-radius: 50%;
-  margin: 0.2em;
+  margin: 0 0.2em;
   transition: all .4s cubic-bezier(.33,.63,.69,1.2);
   box-shadow: 0 1px 5px 0 var(--dark-shadow);
   box-sizing: border-box;
+  color: var(--light-text);
+  font-size: 2rem;
 
   animation: startview-icons 0.5s cubic-bezier(.33,.63,.69,1.2) forwards;
   opacity: 0;
@@ -451,6 +458,85 @@ ul > li:hover{
   border: 1px solid var(--light);
 }
 
+
+/* Popup window for social media */
+
+.share-button-wrapper{
+  transition: all .4s cubic-bezier(.33,.63,.69,1.2);
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 0 0.4em;
+}
+
+.share-button-wrapper:hover{
+  transform: scale(1.03);
+}
+
+.share-button{
+  position: relative;
+  margin: 0.4em auto;
+  width: var(--width-buttons);
+  border: var(--border-button);
+  color: var(--light-text);
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 4px 15px 0 var(--dark-shadow);
+  border-radius: 0.5em;
+  background-image: linear-gradient(to right, var(--show-moves-1), var(--show-moves-2), var(--show-moves-3), var(--show-moves-1));
+  background-size: 300% 100%;
+  padding: 0.5em;
+  /* margin: 0.5em; */
+
+
+  transition: all .4s cubic-bezier(.33,.63,.69,1.2);
+  animation: startview 0.5s cubic-bezier(.33,.63,.69,1.2) forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+
+.share-button:hover{
+  cursor: pointer;
+  background-position: 100% 0;
+}
+
+.popup-box {
+  position: fixed;
+  background-color: var(--popup-background);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+ 
+.box {
+  position: relative;
+  width: 40%;
+  min-width: fit-content;
+  margin: 0 auto;
+  height: fit-content;
+  background: var(--semi-dark);
+  border-radius: 0.5em;
+  border: var(--border-button);
+  overflow: auto;
+  padding: 1em;
+}
+ 
+.close-popup {
+  cursor: pointer;
+  position: relative;
+  width: 40%;
+  margin:auto;
+  display: block;
+  margin: 0.5em;
+  font-size: 1.2em;
+  font-weight: bolder;
+  text-align: right;
+  height: fit-content;
+  min-width: fit-content;
+}
 
 /* Media quieries */
 

@@ -1,10 +1,9 @@
 import React from "react";
 import Board from "./Board";
-import { EmailShareButton, FacebookShareButton, FacebookMessengerShareButton, WhatsappShareButton, TwitterShareButton } from 'react-share';
-import { FacebookIcon, EmailIcon, WhatsappIcon, TwitterIcon, FacebookMessengerIcon } from 'react-share';
 import 'reactjs-popup/dist/index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRedo, faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
+import { faRedo, faCaretDown, faCaretUp, faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import Popup from "./Popup";
 
 
 
@@ -21,6 +20,7 @@ class Game extends React.Component {
         show: "Show",
         arrow: faCaretDown,
         theme: "theme1",
+        popUp: false
       };
 
       this.initialState = {
@@ -70,6 +70,10 @@ class Game extends React.Component {
       } else { this.setState({theme: "theme1"})}
     }
 
+    togglePopup = () => {
+      this.setState({popUp: !this.state.popUp})
+    }
+
 
     render() {
       const theme = this.state.theme;
@@ -117,8 +121,8 @@ class Game extends React.Component {
               </div>
           </div>
           <div className="game-2">
-            <div className="show-moves-wrapper"><button onClick={this.handleTheme} className="show-button">Change Theme</button></div>
-              <div className="new-game-wrapper"><button className="new-game" onClick={() => this.setState(this.initialState)}>New Game <FontAwesomeIcon icon={faRedo} /></button>
+            <div className="show-moves-wrapper"><div onClick={this.handleTheme} className="show-button">Change Theme</div></div>
+              <div className="new-game-wrapper"><div className="new-game" onClick={() => this.setState(this.initialState)}>New Game <FontAwesomeIcon icon={faRedo} /></div>
                 </div>
               <div className="game-info">
               <div className="show-moves-wrapper"><button onClick={this.handleShowMoves} className="show-button">{show} Moves <FontAwesomeIcon icon={ arrow } /></button></div>
@@ -126,23 +130,9 @@ class Game extends React.Component {
               </div>
             </div>      
         </div>
-        <div className="social-icons">
-          <FacebookShareButton url="https://kristinapeneva.com/tic-tac-toe-game">
-            <FacebookIcon size="1.5rem" round={true} className="icon icon-fb" quote="Check this awesome Tic-Tac-Toe game! I just love it <3" />
-          </ FacebookShareButton>
-          <FacebookMessengerShareButton url="https://kristinapeneva.com/tic-tac-toe-game">
-            <FacebookMessengerIcon size="1.5rem" round={true} className="icon icon-msg" quote="Check this awesome Tic-Tac-Toe game! I just love it <3" />
-          </ FacebookMessengerShareButton>
-          <WhatsappShareButton url="https://kristinapeneva.com/tic-tac-toe-game">
-            <WhatsappIcon size="1.5rem" round={true} className="icon icon-wa" />
-          </ WhatsappShareButton>
-          <EmailShareButton url="https://kristinapeneva.com/tic-tac-toe-game">
-            <EmailIcon size="1.5rem" round={true} className="icon icon-eml" subject="A New Tic-Tac-Toe Game! Check it!"/>
-          </ EmailShareButton>
-          <TwitterShareButton url="https://kristinapeneva.com/tic-tac-toe-game">
-            <TwitterIcon size="1.5rem" round={true} className="icon icon-tw" title="Tic-Tac-Toe Game" />
-          </ TwitterShareButton>
-        </div>
+        <div className="share-button-wrapper"><div onClick={this.togglePopup}><FontAwesomeIcon icon={ faShareAlt } className="share-button"/></div></div>
+        {this.state.popUp && <Popup theme={this.state.theme} handleClose={this.togglePopup} />}
+        
         </div>
         </div>
       );
