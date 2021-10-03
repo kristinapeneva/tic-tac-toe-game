@@ -10,8 +10,9 @@ You may check the final result at https://kristinapeneva.com/tic-tac-toe-game
 - color palette
 - button New Game added
 - list of moves hidden
-- social media share icons
+- social media share icons / pop-up
 - media queries
+- dark mode
 
 
 ### Follow me
