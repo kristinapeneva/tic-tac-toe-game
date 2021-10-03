@@ -7,8 +7,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 const Popup = props => {
     return (
         <div className="popup-box">
-            <span className="close-popup" onClick={props.handleClose}>X</span>
-            <div className="box">                
+            <span className="close-popup" onClick={props.handleClose}>X</span>               
                 <div className="social-icons">
                     <FacebookShareButton url="https://kristinapeneva.com/tic-tac-toe-game">
                         <FontAwesomeIcon icon={faFacebook} className="icon icon-fb" />
@@ -26,7 +25,6 @@ const Popup = props => {
                         <FontAwesomeIcon icon={faTwitter} className="icon icon-tw" />
                     </ TwitterShareButton>
                 </div>
-            </div>
         </div>
     )
 }
