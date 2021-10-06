@@ -5,8 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRedo, faCaretDown, faCaretUp, faShareAlt, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import Popup from "./Popup";
 
-
-
 class Game extends React.Component {
     constructor(props) {
       super(props);
@@ -32,7 +30,6 @@ class Game extends React.Component {
         xIsNext: true,
       }
     }
-
   
     handleClick(i) {
       const history = this.state.history.slice(0, this.state.stepNumber + 1);
@@ -75,7 +72,6 @@ class Game extends React.Component {
       this.setState({popUp: !this.state.popUp})
     }
 
-
     render() {
       const themeIcon = this.state.themeIcon;
       const theme = this.state.theme;
@@ -101,49 +97,37 @@ class Game extends React.Component {
       } else {
         status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
       }
-
-
-    
-
   
       return (
         <div className={theme}>
-        <div className="wrapper">
-        <div className="game">
-          <div className="game-1">
-              <div className="status">{status}</div>
-              <div className="game-board">            
-                <Board 
-                squares={current.squares}
-                onClick={(i) => this.handleClick(i)}
-                winningCombination={endGameResults?.winningCombination}
-                />
-              </div>
-          </div>
-          <div className="game-2">
-
-              <div className="new-game-wrapper"><div className="new-game" onClick={() => this.setState(this.initialState)}>New Game <FontAwesomeIcon icon={faRedo} /></div>
+          <div className="wrapper">
+            <div className="game">
+              <div className="game-1">
+                <div className="status">{status}</div>
+                <div className="game-board">            
+                    <Board 
+                    squares={current.squares}
+                    onClick={(i) => this.handleClick(i)}
+                    winningCombination={endGameResults?.winningCombination}
+                    />
                 </div>
-              {/* <div className="game-info"> */}
+              </div>
+              <div className="game-2">
+                <div className="new-game-wrapper"><div className="new-game" onClick={() => this.setState(this.initialState)}>New Game <FontAwesomeIcon icon={faRedo} /></div></div>
                 <div className="show-moves-wrapper"><div onClick={this.handleShowMoves} className="show-button">{show} Moves <FontAwesomeIcon icon={ arrow } /></div></div>
                 <div className={showMoves ? "move-wrapper" : "move-wrapper hide"}>{moves}</div>
-              {/* </div> */}
+              </div>                
             </div>
-                
-        </div>
-        {this.state.popUp && <Popup theme={this.state.theme} handleClose={this.togglePopup} />}  
-        <div className="share-theme-icons">
-          <div className="share-button-wrapper"><div onClick={this.togglePopup} className="share-button"><FontAwesomeIcon icon={ faShareAlt } /></div></div>
-          
-          <div className="theme-button-wrapper"><div onClick={this.handleTheme} className="theme-button"><FontAwesomeIcon icon={ themeIcon } /></div></div>
-        </div>
-        </div>
+            {this.state.popUp && <Popup theme={this.state.theme} handleClose={this.togglePopup} />}  
+            <div className="share-theme-icons">
+              <div className="share-button-wrapper"><div onClick={this.togglePopup} className="share-button"><FontAwesomeIcon icon={ faShareAlt } /></div></div>              
+              <div className="theme-button-wrapper"><div onClick={this.handleTheme} className="theme-button"><FontAwesomeIcon icon={ themeIcon } /></div></div>
+            </div>
+          </div>
         </div>
       );
     }
-  }
-
-  
+  }  
 
   function calculateWinner(squares) {
     const lines = [
